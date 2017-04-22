@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="rejestracja.jsp">Rejestracja</a>
 <h1>Welcome to Jsp!</h1>
 <hr/>
 <form action="MyServlet.do">
