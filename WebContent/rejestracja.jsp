@@ -17,41 +17,41 @@
 			</div>
 		</div>
 		<div class="row">
-			<form action="">
+			<form action="Rejestracja" method="post">
 				<div class="col-xs-12 col-sm-6">
 					<div class="form-group">
 						<label for="imie">Imię*:</label>
-						<input type="text" id="imie" class="form-control" required>
+						<input type="text" id="imie" name="imie" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label for="nazwisko">Nazwisko*:</label>
-						<input type="text" id="nazwisko" class="form-control" required>
+						<input type="text" id="nazwisko" name="nazwisko" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label for="email">Adres email*:</label>
-						<input type="text" id="email" class="form-control" required>
+						<input type="email" id="email" name="email" class="form-control" required>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6">
 					<div class="form-group">
 						<label for="login">Login*:</label>
-						<input type="text" id="login" class="form-control" required>
+						<input type="text" id="login" name="login" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label for="haslo">Hasło*:</label>
-						<input type="text" id="haslo" class="form-control" required>
+						<input type="text" id="haslo" name="haslo" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label for="haslo2">Wprowadź ponownie hasło*:</label>
-						<input type="text" id="haslo2" class="form-control" required>
+						<input type="text" id="haslo2" name="haslo2" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label for="miasto">Miasto*:</label>
-						<input type="text" id="miasto" class="form-control"	 required>
+						<input type="text" id="miasto" name="miasto" class="form-control" required>
 					</div>
 				</div>
 				<div class="col-xs-12 text-right">
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default">Zarejestruj</button>
 				</div>
 			</form>
 		</div>

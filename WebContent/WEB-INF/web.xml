@@ -19,4 +19,14 @@
     <servlet-name>MyServlet</servlet-name>
     <url-pattern>/MyServlet.do</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Rejestracja</display-name>
+    <servlet-name>Rejestracja</servlet-name>
+    <servlet-class>com.srk.pkg.Rejestracja</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Rejestracja</servlet-name>
+    <url-pattern>/Rejestracja</url-pattern>
+  </servlet-mapping>
 </web-app>

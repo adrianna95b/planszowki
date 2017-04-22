@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Serwis wymiany planszowek</title>
 </head>
 <body>
 <a href="rejestracja.jsp">Rejestracja</a>
-<h1>Welcome to Jsp!</h1>
+<h3>Witaj</h3>
 <hr/>
 <form action="MyServlet.do">
 <input type="submit" value="Send"/>
