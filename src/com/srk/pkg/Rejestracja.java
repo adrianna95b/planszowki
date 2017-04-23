@@ -8,6 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  * Servlet implementation class Rejestracja
  */
@@ -49,12 +55,37 @@ public class Rejestracja extends HttpServlet {
 		String message = " ";
 		
 		
-		if ( !haslo.equals(haslo2) )  {
-			message = "Wpisz dwa identyczne hasła.";}
+		if (!haslo.equals(haslo2))  {
+			message = "Wpisz dwa identyczne hasła.";
+			}
 		
+		String connectionString = "jdbc:mysql://localhost:3306/planszowki?verifyServerCertificate=false&useSSL=true";
+		Connection connection;
+		Statement command;
+		ResultSet data;
+		
+			
+		try {
+		    Class.forName("com.mysql.jdbc.Driver");
+		    System.out.println("Driver loaded!");
+		}
+		
+		catch (ClassNotFoundException e) {
+		    
+			throw new IllegalStateException("Cannot find the driver in the classpath!", e);
+		}
+	
+		try {
+			connection = DriverManager.getConnection(connectionString, "root", "mleko");
+			command = connection.createStatement();
+			command.execute("INSERT INTO uzytkownicy (login, haslo, email, imie, nazwisko, miasto) VALUES ('" + login + "','" + haslo + "','" + email + "','" + imie + "','" + nazwisko + "','" + miasto + "');");
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+
 		request.setAttribute("message", message);
         request.getRequestDispatcher("/rejestracja.jsp").forward(request, response);	
-		}	
+		}
 
-}
-
+	}
