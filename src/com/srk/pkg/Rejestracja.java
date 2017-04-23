@@ -46,17 +46,15 @@ public class Rejestracja extends HttpServlet {
 		String haslo = request.getParameter("haslo");
 		String haslo2 = request.getParameter("haslo2");
 		String miasto = request.getParameter("miasto");
-		
+		String message = " ";
 		
 		
 		if ( !haslo.equals(haslo2) )  {
-			out.println(" Wpisz dwa identyczne hasła. <a href='rejestracja.jsp'>Powrót</a>");
-			return;
-		}
-		out.print(imie + ' ' + nazwisko + ' ' + email + ' ' + login + ' ' + haslo + ' '
-				+ haslo2 + ' ' + miasto);
+			message = "Wpisz dwa identyczne hasła.";}
 		
-		
-	}
+		request.setAttribute("message", message);
+        request.getRequestDispatcher("/rejestracja.jsp").forward(request, response);	
+		}	
 
 }
+

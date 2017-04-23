@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,6 +15,20 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<h2>Formularz rejestracyjny</h2>
+			</div>
+			<div class="col-xs-12">
+				<c:choose>
+				    <c:when test="${message == ''}">
+				    	<div class="alert alert-success" role="alert">
+							Udało Ci się zarejestrować! Powróć do <a href="index.jsp">strony głównej</a> i rozpocznij korzystanie z serwisu!
+						</div>
+				    </c:when>
+				    <c:when test="${not empty message}">
+				        <div class="alert alert-danger" role="alert">
+							Wystąpił błąd podczas rejestracji. ${message} Spróbuj ponownie.
+						</div>
+				    </c:when>
+				</c:choose>
 			</div>
 		</div>
 		<div class="row">
@@ -39,11 +54,11 @@
 					</div>
 					<div class="form-group">
 						<label for="haslo">Hasło*:</label>
-						<input type="text" id="haslo" name="haslo" class="form-control" required>
+						<input type="password" id="haslo" name="haslo" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label for="haslo2">Wprowadź ponownie hasło*:</label>
-						<input type="text" id="haslo2" name="haslo2" class="form-control" required>
+						<input type="password" id="haslo2" name="haslo2" class="form-control" required>
 					</div>
 					<div class="form-group">
 						<label for="miasto">Miasto*:</label>
