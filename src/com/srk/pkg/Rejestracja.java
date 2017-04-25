@@ -43,6 +43,7 @@ public class Rejestracja extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 		
+		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		out.print("Odebrano formularz metoda post");
 		
