@@ -101,7 +101,7 @@
 						<input type="password" id="haslo" name="haslo" class="form-control" required>
 					</div>
 					<div class="form-group">
-						<label for="haslo2">Wprowadź ponownie hassło*:</label>
+						<label for="haslo2">Wprowadź ponownie hasło*:</label>
 						<input type="password" id="haslo2" name="haslo2" class="form-control" required>
 					</div>
 					<div class="form-group">
