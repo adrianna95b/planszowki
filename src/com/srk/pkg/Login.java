@@ -13,17 +13,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Rejestracja
+ * Servlet implementation class Login
  */
-public class Rejestracja extends HttpServlet {
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Rejestracja() {
+    public Login() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,36 +43,27 @@ public class Rejestracja extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
+				
 		response.setCharacterEncoding("UTF-8");
 		
-		String imie = request.getParameter("imie");
-		String nazwisko = request.getParameter("nazwisko");
-		String email = request.getParameter("email");
+		PrintWriter out = response.getWriter();
+		response.setCharacterEncoding("UTF-8");
+			
 		String login = request.getParameter("login");
 		String haslo = request.getParameter("haslo");
-		String haslo2 = request.getParameter("haslo2");
-		String miasto = request.getParameter("miasto");
 		
 		String message = "";
 		
-		if ( !haslo.equals(haslo2) )  {
-			message = "Wpisz dwa identyczne has≥a.";
-			request.setAttribute("message", message);
-			request.getRequestDispatcher("/rejestracja.jsp").forward(request, response);
-			return;
-		}
+		out.print(login);
+		out.print(haslo);
 		
-		
-		// do Bazy
+		// enter to a DB
 		String connectionString = "jdbc:mysql://localhost:3306/planszowki?verifyServerCertificate=false&useSSL=true";
 		Connection connection;
 		Statement command;
-		ResultSet checkLogin = null;
-		ResultSet checkMail = null;
-	
-		int countLogin = 0;
-		int countMail = 0;
+		ResultSet query = null;
+		int countUser = 0;
+		String imie = "";
 		
 		try {
 		    Class.forName("com.mysql.jdbc.Driver");
@@ -82,45 +74,40 @@ public class Rejestracja extends HttpServlet {
 		}
 		
 		try {
-			connection = DriverManager.getConnection(connectionString, "root", "mleko");
+			connection = DriverManager.getConnection(connectionString, "root", "password");
 			command = connection.createStatement();
 			
-			checkLogin = command.executeQuery("SELECT COUNT(login) FROM uzytkownicy WHERE login = '" + login + "';");
-			if (checkLogin.first()) {
-				countLogin = checkLogin.getInt(1);
+			query = command.executeQuery("SELECT COUNT(login) FROM uzytkownicy WHERE login = '" + login + "' and haslo = '" + haslo + "';");
+			if (query.first()) {
+				countUser = query.getInt(1);
 			}
-			checkLogin.close();
 			
-			checkMail = command.executeQuery("SELECT COUNT(email) FROM uzytkownicy WHERE email = '" + email + "';");
-			if (checkMail.first()) {
-				countMail = checkMail.getInt(1);
-			}
-			checkMail.close();
-			
-			if (countLogin != 0)  {
-				message = "Nazwa użytkownika jest już zajęta.";
+			if (countUser != 1)  {
+				message = "Błędny login lub hasło.";
 				request.setAttribute("message", message);
-				request.getRequestDispatcher("/rejestracja.jsp").forward(request, response);
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
+				query.close();
 				return;
 			}
-			
-			if (countMail != 0)  {
-				message = "Adres email jest już zajęty.";
-				request.setAttribute("message", message);
-				request.getRequestDispatcher("/rejestracja.jsp").forward(request, response);
-				return;
+			else {
+				query = command.executeQuery("SELECT imie FROM uzytkownicy WHERE login = '" + login + "' and haslo = '" + haslo + "';");
+				if (query.first()) {
+					imie = query.getString(1);
+				}
+				query.close();
+				out.print(imie);
+				HttpSession session = request.getSession();
+				session.setAttribute("logged", true);
+				session.setAttribute("imie", imie);
+				session.setAttribute("login", login);
 			}
-			
-			
-			command.execute("INSERT INTO uzytkownicy (login, haslo, email, imie, nazwisko, miasto) VALUES ('" + login + "','" + haslo + "','" + email + "','" + imie + "','" + nazwisko + "','" + miasto + "');");
 			request.setAttribute("message", message);
-			request.getRequestDispatcher("/rejestracja.jsp").forward(request, response);
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
 		} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 }

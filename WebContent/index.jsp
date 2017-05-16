@@ -20,7 +20,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse">
+		<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="index.jsp">Planszówki</a>
@@ -29,8 +29,8 @@
 				<li class="active"><a href="index.jsp">Home</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				<li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				<li><a href="rejestracja.jsp"><span class="glyphicon glyphicon-user"></span> Zarejestruj</a></li>
-				<!-- <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
 			</ul>
 		</div>
 	</nav>
