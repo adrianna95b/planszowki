@@ -74,7 +74,7 @@ public class Login extends HttpServlet {
 		}
 		
 		try {
-			connection = DriverManager.getConnection(connectionString, "root", "password");
+			connection = DriverManager.getConnection(connectionString, "root", "mleko");
 			command = connection.createStatement();
 			
 			query = command.executeQuery("SELECT COUNT(login) FROM uzytkownicy WHERE login = '" + login + "' and haslo = '" + haslo + "';");

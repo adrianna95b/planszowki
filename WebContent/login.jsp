@@ -73,7 +73,7 @@
 				<c:choose>
 				    <c:when test="${message == ''}">
 				    	<div class="alert alert-success" role="alert">
-							Udało Ci się zalogować! ${imie}, rozpocznij korzystanie z serwisu <a href="index.jsp">tutaj</a>
+							Udało Ci się zalogować! ${imie}, rozpocznij korzystanie z serwisu!
 						</div>
 				    </c:when>
 				    <c:when test="${not empty message}">
@@ -85,24 +85,26 @@
 			</div>
 		</div>
 		
-		<div class="row">
-			<form action="Login" method="post">
-				<div class="col-xs-12 col-sm-6 col-sm-push-3">
-					<div class="form-group">
-						<label for="login">Login*:</label>
-						<input type="text" id="login" name="login" class="form-control" required>
+		<c:if test="${empty logged or logged == false}">
+			<div class="row">
+				<form action="Login" method="post">
+					<div class="col-xs-12 col-sm-6 col-sm-push-3">
+						<div class="form-group">
+							<label for="login">Login*:</label>
+							<input type="text" id="login" name="login" class="form-control" required>
+						</div>
+						<div class="form-group">
+							<label for="haslo">Hasło*:</label>
+							<input type="password" id="haslo" name="haslo" class="form-control" required>
+						</div>
+						<hr class="separator">
 					</div>
-					<div class="form-group">
-						<label for="haslo">Hasło*:</label>
-						<input type="password" id="haslo" name="haslo" class="form-control" required>
+					<div class="col-xs-12 text-center">
+						<button type="submit" class="btn btn-primary btn-lg">Zaloguj</button>
 					</div>
-					<hr class="separator">
-				</div>
-				<div class="col-xs-12 text-center">
-					<button type="submit" class="btn btn-primary btn-lg">Zaloguj</button>
-				</div>
-			</form>
-		</div>
+				</form>
+			</div>
+		</c:if>
 		
 	</div>
 </body>

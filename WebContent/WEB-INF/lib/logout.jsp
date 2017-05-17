@@ -9,6 +9,29 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Planszówki - wyloguj</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<style>
+		body {
+			padding-bottom: 40px;
+		}
+		
+		.navbar {
+			border-radius: 0;
+		}
+		
+		.header {
+			margin-top: 40px;
+			margin-bottom: 30px;
+		}
+		
+		.form-group {
+			margin-bottom: 20px;
+		}
+		
+		.separator {
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+	</style>
 </head>
 <body>
 
@@ -30,24 +53,27 @@
 				</c:when>
 				<c:when test="${empty logged or logged == false}">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="active"><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						<li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 						<li><a href="rejestracja.jsp"><span class="glyphicon glyphicon-user"></span> Zarejestruj</a></li>
 					</ul>
 				</c:when>
 			</c:choose>
 		</div>
-	</nav>			
+	</nav>				
 	
-	<div class="container">	
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 text-center">
+				<h2 class="header">Wyloguj</h2>
+			</div>
+		</div>
 		<div class="row">	
 			<div class="col-xs-12 col-sm-6 col-sm-push-3">
-				<c:choose>
-				    <c:when test="${not empty message}">
-				        <div class="alert alert-success" role="alert">
-							${message} <a href="index.jsp">Powrót do serwisu.</a>
-						</div>
-				    </c:when>
-				</c:choose>
+				<c:if test="${not empty message}">
+					<div class="alert alert-success" role="alert">
+						${message} <a href="index.jsp">Powrót do serwisu.</a>
+					</div>
+				</c:if>
 			</div>
 		</div>
 	</div>
