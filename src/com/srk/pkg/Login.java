@@ -43,19 +43,13 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-				
+		
 		response.setCharacterEncoding("UTF-8");
 		
-		PrintWriter out = response.getWriter();
-		response.setCharacterEncoding("UTF-8");
-			
 		String login = request.getParameter("login");
 		String haslo = request.getParameter("haslo");
 		
 		String message = "";
-		
-		out.print(login);
-		out.print(haslo);
 		
 		// enter to a DB
 		String connectionString = "jdbc:mysql://localhost:3306/planszowki?verifyServerCertificate=false&useSSL=true";
@@ -83,7 +77,7 @@ public class Login extends HttpServlet {
 			}
 			
 			if (countUser != 1)  {
-				message = "Błędny login lub hasło.";
+				message = "B³êdny login lub has³o.";
 				request.setAttribute("message", message);
 				request.getRequestDispatcher("/login.jsp").forward(request, response);
 				query.close();
@@ -95,7 +89,6 @@ public class Login extends HttpServlet {
 					imie = query.getString(1);
 				}
 				query.close();
-				out.print(imie);
 				HttpSession session = request.getSession();
 				session.setAttribute("logged", true);
 				session.setAttribute("imie", imie);

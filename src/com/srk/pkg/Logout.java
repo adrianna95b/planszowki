@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 /**
  * Servlet implementation class Logout
  */
@@ -21,7 +22,7 @@ public class Logout extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-    /**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +30,7 @@ public class Logout extends HttpServlet {
 		response.setContentType("text/html");
 		HttpSession session = request.getSession();
 		session.invalidate();
-		String message = "Udało Ci się poprawnie wylogować";
+		String message = "Uda³o Ci siê poprawnie wylogowaæ.";
 		request.setAttribute("message", message);
 		request.getRequestDispatcher("/logout.jsp").forward(request, response);
 	}

@@ -56,20 +56,19 @@ public class Rejestracja extends HttpServlet {
 		String message = "";
 		
 		if ( !haslo.equals(haslo2) )  {
-			message = "Wpisz dwa identyczne has≥a.";
+			message = "Wpisz dwa identyczne has³a.";
 			request.setAttribute("message", message);
 			request.getRequestDispatcher("/rejestracja.jsp").forward(request, response);
 			return;
 		}
 		
 		
-		// do Bazy
+		// enter to a DB
 		String connectionString = "jdbc:mysql://localhost:3306/planszowki?verifyServerCertificate=false&useSSL=true";
 		Connection connection;
 		Statement command;
 		ResultSet checkLogin = null;
 		ResultSet checkMail = null;
-	
 		int countLogin = 0;
 		int countMail = 0;
 		
@@ -98,19 +97,18 @@ public class Rejestracja extends HttpServlet {
 			checkMail.close();
 			
 			if (countLogin != 0)  {
-				message = "Nazwa użytkownika jest już zajęta.";
+				message = "Nazwa u¿ytkownika jest ju¿ zajêta.";
 				request.setAttribute("message", message);
 				request.getRequestDispatcher("/rejestracja.jsp").forward(request, response);
 				return;
 			}
 			
 			if (countMail != 0)  {
-				message = "Adres email jest już zajęty.";
+				message = "Adres email jest ju¿ zajêty.";
 				request.setAttribute("message", message);
 				request.getRequestDispatcher("/rejestracja.jsp").forward(request, response);
 				return;
 			}
-			
 			
 			command.execute("INSERT INTO uzytkownicy (login, haslo, email, imie, nazwisko, miasto) VALUES ('" + login + "','" + haslo + "','" + email + "','" + imie + "','" + nazwisko + "','" + miasto + "');");
 			request.setAttribute("message", message);

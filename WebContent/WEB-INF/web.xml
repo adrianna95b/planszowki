@@ -49,4 +49,14 @@
     <servlet-name>Logout</servlet-name>
     <url-pattern>/Logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Edytuj_profil</display-name>
+    <servlet-name>Edytuj_profil</servlet-name>
+    <servlet-class>com.srk.pkg.Edytuj_profil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Edytuj_profil</servlet-name>
+    <url-pattern>/Edytuj_profil</url-pattern>
+  </servlet-mapping>
 </web-app>

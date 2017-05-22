@@ -18,7 +18,7 @@
 			border-radius: 0;
 		}
 		
-		.h2 {
+		.header {
 			margin-top: 40px;
 			margin-bottom: 30px;
 		}
@@ -43,17 +43,28 @@
 			<ul class="nav navbar-nav">
 				<li><a href="index.jsp">Home</a></li>
 			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-				<li class="active"><a href="rejestracja.jsp"><span class="glyphicon glyphicon-user"></span> Zarejestruj</a></li>
-			</ul>
+			<c:choose>
+				<c:when test="${logged == true}">
+					<ul class="nav navbar-nav navbar-right">
+						<li><p class="navbar-text">Zalogowany jako ${login}</p></li>
+						<li><a href="Edytuj_profil">Edytuj profil</a></li>
+						<li><a href="Logout">Wyloguj</a></li>
+					</ul>
+				</c:when>
+				<c:when test="${empty logged or logged == false}">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+						<li class="active"><a href="rejestracja.jsp"><span class="glyphicon glyphicon-user"></span> Zarejestruj</a></li>
+					</ul>
+				</c:when>
+			</c:choose>
 		</div>
-	</nav>		
+	</nav>	
 	
 	<div class="container">	
 		<div class="row">
 			<div class="col-xs-12 text-center">
-				<h2>Formularz rejestracyjny</h2>
+				<h2 class="header">Formularz rejestracyjny</h2>
 			</div>
 		</div>
 		
