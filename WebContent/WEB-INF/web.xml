@@ -59,4 +59,14 @@
     <servlet-name>Edytuj_profil</servlet-name>
     <url-pattern>/Edytuj_profil</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Aktualizuj_profil</display-name>
+    <servlet-name>Aktualizuj_profil</servlet-name>
+    <servlet-class>com.srk.pkg.Aktualizuj_profil</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Aktualizuj_profil</servlet-name>
+    <url-pattern>/Aktualizuj_profil</url-pattern>
+  </servlet-mapping>
 </web-app>
