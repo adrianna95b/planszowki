@@ -48,7 +48,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><p class="navbar-text">Zalogowany jako ${login}</p></li>
 						<li><a href="Edytuj_profil">Edytuj profil</a></li>
-						<li><a href="Logout">Wyloguj</a></li>
+						<li class="active"><a href="Logout">Wyloguj</a></li>
 					</ul>
 				</c:when>
 				<c:when test="${empty logged or logged == false}">
