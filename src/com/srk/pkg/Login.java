@@ -58,6 +58,8 @@ public class Login extends HttpServlet {
 		ResultSet query = null;
 		int countUser = 0;
 		String imie = "";
+		String miasto = "";
+		int userId = 0;
 		
 		try {
 		    Class.forName("com.mysql.jdbc.Driver");
@@ -84,15 +86,19 @@ public class Login extends HttpServlet {
 				return;
 			}
 			else {
-				query = command.executeQuery("SELECT imie FROM uzytkownicy WHERE login = '" + login + "' and haslo = '" + haslo + "';");
+				query = command.executeQuery("SELECT uz_id, imie, miasto FROM uzytkownicy WHERE login = '" + login + "' and haslo = '" + haslo + "';");
 				if (query.first()) {
-					imie = query.getString(1);
+					userId = query.getInt(1);
+					imie = query.getString(2);
+					miasto = query.getString(3);
 				}
 				query.close();
 				HttpSession session = request.getSession();
 				session.setAttribute("logged", true);
 				session.setAttribute("imie", imie);
 				session.setAttribute("login", login);
+				session.setAttribute("userId", userId);
+
 			}
 			request.setAttribute("message", message);
 			request.getRequestDispatcher("/login.jsp").forward(request, response);

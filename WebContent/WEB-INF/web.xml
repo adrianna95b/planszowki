@@ -69,4 +69,14 @@
     <servlet-name>Aktualizuj_profil</servlet-name>
     <url-pattern>/Aktualizuj_profil</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Dodaj_ogloszenie</display-name>
+    <servlet-name>Dodaj_ogloszenie</servlet-name>
+    <servlet-class>com.srk.pkg.Dodaj_ogloszenie</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Dodaj_ogloszenie</servlet-name>
+    <url-pattern>/Dodaj_ogloszenie</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -42,6 +42,7 @@
 			</div>
 			<ul class="nav navbar-nav">
 				<li><a href="index.jsp">Home</a></li>
+				<li><a href="dodaj_ogloszenie.jsp">Dodaj ogłoszenie</a></li>
 			</ul>
 			<c:choose>
 				<c:when test="${logged == true}">
