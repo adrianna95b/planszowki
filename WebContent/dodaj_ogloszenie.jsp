@@ -36,41 +36,35 @@
 <body>
 
 	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="index.jsp">Planszówki</a>
-			</div>
-			<c:choose>
-				<c:when test="${logged == true}">
-					<ul class="nav navbar-nav">
-						<li><a href="index.jsp">Home</a></li>
-						<li><a href="doaj_ogloszenie.jsp">Dodaj ogłoszenie</a></li>
-					</ul>
-				</c:when>
-				<c:when test="${empty logged or logged == false}">
-					<ul class="nav navbar-nav">
-						<li><a href="index.jsp">Home</a></li>
-						<li class="active"><a href="dodaj_ogloszenie.jsp">Dodaj ogłoszenie</a></li>
-					</ul>
-				</c:when>
-			</c:choose>
-			<c:choose>
-				<c:when test="${logged == true}">
-					<ul class="nav navbar-nav navbar-right">
-						<li><p class="navbar-text">Zalogowany jako ${login}</p></li>
-						<li><a href="Edytuj_profil">Edytuj profil</a></li>
-						<li><a href="Logout">Wyloguj</a></li>
-					</ul>
-				</c:when>
-				<c:when test="${empty logged or logged == false}">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-						<li class="active"><a href="rejestracja.jsp"><span class="glyphicon glyphicon-user"></span> Zarejestruj</a></li>
-					</ul>
-				</c:when>
-			</c:choose>
-		</div>
-	</nav>	
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.jsp">Planszówki</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="index.jsp">Home</a></li>
+            <c:if test="${logged == true}">
+                <li><a href="ogloszenia.jsp">Ogłoszenia</a></li>
+                <li class="active"><a href="dodaj_ogloszenie.jsp">Dodaj ogloszenie</a></li>
+                <li><a href="ulubione.jsp">Ulubione</a></li>
+            </c:if>
+        </ul>
+        <c:choose>
+            <c:when test="${logged == true}">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><p class="navbar-text">Zalogowany jako ${login}</p></li>
+                    <li><a href="Edytuj_profil">Edytuj profil</a></li>
+                    <li><a href="Logout">Wyloguj</a></li>
+                </ul>
+            </c:when>
+            <c:when test="${empty logged or logged == false}">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="rejestracja.jsp"><span class="glyphicon glyphicon-user"></span> Zarejestruj</a></li>
+                </ul>
+            </c:when>
+        </c:choose>
+    </div>
+</nav>	
 	
 	<div class="container">	
 		<div class="row">
